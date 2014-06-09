@@ -10,6 +10,8 @@ import javax.comm.SerialPortEvent;
 import javax.comm.SerialPortEventListener;
 import javax.comm.UnsupportedCommOperationException;
 
+import mindwave.ThinkGear;
+
 
 
 
@@ -60,12 +62,14 @@ public class MindwaveTest {
 		//String s= '\.';
 		int res=ThinkGear.Connect(re, "\\\\.\\COM13", hre, ThinkGear.STREAM_PACKETS);
 		System.out.println(res);
-		int dataset=ThinkGear.SetDataFormat(re, 0);
-		System.out.println(dataset);
-		double de= ThinkGear.GetValue(re, 3);
-		System.out.println(de);
-		int read=ThinkGear.ReadPackets(re, 1);
+		
+		int read = ThinkGear.ReadPackets(re, -1);
 		System.out.println(read);
+		double de= ThinkGear.GetValue(re,5);
+		System.out.println(de);
+		System.out.println(ThinkGear.GetValueStatus(re, 1));
+		
+		
 		
 		
 	}
