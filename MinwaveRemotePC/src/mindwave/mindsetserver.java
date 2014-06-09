@@ -1,5 +1,7 @@
 package mindwave;
 
+import ThinkGear;
+
 import java.util.Date;
 import java.io.*;
 import java.net.*;

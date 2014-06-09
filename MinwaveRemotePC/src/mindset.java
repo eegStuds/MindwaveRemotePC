@@ -1,25 +1,26 @@
-package mindwave;
+
+
 
 import java.io.*;
 import java.net.*;
 
-public class mindsetb {
+public class mindset {
 
     public static void main(String[] args) {
 		String host = "localhost";
-      	int batteryport = 5603;
-      	int signalport = 5604;
-      	int attentionport = 5605;
-      	int meditationport = 5606;
-      	int deltaport = 5607;
-      	int thetaport = 5608;
-      	int alpha1port = 5609;
-      	int alpha2port = 5610;
-      	int beta1port = 5611;
-      	int beta2port = 5612;
-      	int gamma1port = 5613;
-      	int gamma2port = 5614;
-      	int rawport = 5615;
+      	int batteryport = 5590;
+      	int signalport = 5591;
+      	int attentionport = 5592;
+      	int meditationport = 5593;
+      	int deltaport = 5594;
+      	int thetaport = 5595;
+      	int alpha1port = 5596;
+      	int alpha2port = 5597;
+      	int beta1port = 5598;
+      	int beta2port = 5599;
+      	int gamma1port = 5600;
+      	int gamma2port = 5601;
+      	int rawport = 5602;
 
 
       	DatagramSocket dsocket = null;
@@ -33,7 +34,7 @@ public class mindsetb {
 		}
 
         int connectionId = ThinkGear.GetNewConnectionId();
-        if(ThinkGear.Connect(connectionId, "\\\\.\\COM12", ThinkGear.BAUD_9600, ThinkGear.STREAM_PACKETS) != 0){
+        if(ThinkGear.Connect(connectionId, "\\\\.\\COM10", ThinkGear.BAUD_9600, ThinkGear.STREAM_PACKETS) != 0){
 			System.out.println("Failed to connect");
 		}
 		else{
