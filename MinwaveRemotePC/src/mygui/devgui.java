@@ -5,11 +5,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-import eu.hansolo.steelseries.gauges.*;
-import eu.hansolo.steelseries.tools.*;
+import eu.hansolo.steelseries.gauges.Compass;
 
 public class devgui extends JFrame {
 
@@ -47,5 +46,7 @@ public class devgui extends JFrame {
 		contentPane.add(textField, BorderLayout.WEST);
 		textField.setColumns(10);
 	}
+	
+	Compass kompass = new Compass();
 
 }
