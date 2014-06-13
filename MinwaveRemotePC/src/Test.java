@@ -21,7 +21,7 @@ public class Test {
 			
 			InetAddress localhost = InetAddress.getByName("localhost");
 			
-		     Socket socket = new Socket(localhost, 2000);
+		     Socket socket = new Socket(localhost, 8080);
 		     
 		     InputStream in = socket.getInputStream();
 		     
