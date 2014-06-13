@@ -22,7 +22,7 @@ import ChartDirector.SelectionEvent;
 import ChartDirector.ViewPortAdapter;
 import ChartDirector.ViewPortChangedEvent;
 import ChartDirector.ViewPortListener;
-import net.miginfocom.swing.MigLayout;
+
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;

@@ -8,8 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import eu.hansolo.steelseries.gauges.Compass;
-
 public class devgui extends JFrame {
 
 	private JPanel contentPane;
@@ -48,6 +46,5 @@ public class devgui extends JFrame {
 		textField.setColumns(10);
 	}
 	
-	Compass kompass = new Compass();
-
+	
 }
