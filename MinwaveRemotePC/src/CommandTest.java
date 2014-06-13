@@ -4,9 +4,6 @@ import java.awt.event.KeyEvent;
 
 import remoteapps.KeyRunner;
 
-
-
-
 public class CommandTest {
 
 	public static void main(String[] args) {
