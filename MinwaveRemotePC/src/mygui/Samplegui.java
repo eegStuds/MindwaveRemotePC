@@ -1,4 +1,5 @@
 package mygui;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,7 +23,7 @@ import ChartDirector.SelectionEvent;
 import ChartDirector.ViewPortAdapter;
 import ChartDirector.ViewPortChangedEvent;
 import ChartDirector.ViewPortListener;
-import net.miginfocom.swing.MigLayout;
+
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -32,7 +33,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 
 import javax.swing.JScrollPane;
+
 import java.awt.SystemColor;
+
+import javax.swing.JProgressBar;
 
 public class Samplegui extends JFrame implements DemoModule{
 
@@ -66,6 +70,16 @@ private JTextField valueA;
 
 /////////////centrepanel////////////////
 protected ChartViewer mChartviewer;
+private JPanel left_scrollpanel;
+private JProgressBar meditation_progressBar;
+private JProgressBar attention_progressBar;
+private JPanel left_blinkpanel;
+private JLabel blinklabel_1;
+private JLabel blinklabel_2;
+private JLabel blinklabel_3;
+private JLabel blinklabel_4;
+private JLabel blinklabel_5;
+private JLabel blinklabel_6;
 	
 	
 	
@@ -156,6 +170,92 @@ protected void chartViewer1_viewPortChanged(ViewPortChangedEvent e) {
 
 
 protected void addSignalsfield_toScrolllist(){
+	
+	
+	signals_scrollPane = new JScrollPane();
+ 	left_centrePanel.add(signals_scrollPane, BorderLayout.CENTER);
+ 	
+ 	left_scrollpanel = new JPanel();
+ 	left_scrollpanel.setBackground(new Color(47, 79, 79));
+ 	signals_scrollPane.setViewportView(left_scrollpanel);
+ 	left_scrollpanel.setLayout(new GridLayout(7, 0, 0, 0));
+ 	
+ 	
+ 	JLabel label = new JLabel("Eye Blink");
+ 	label.setMinimumSize(new Dimension(42, 8));
+ 	label.setPreferredSize(new Dimension(42, 8));
+ 	label.setForeground(new Color(222, 184, 135));
+ 	left_scrollpanel.add(label);
+ 	
+ 	left_blinkpanel = new JPanel();
+ 	left_blinkpanel.setBackground(new Color(255, 255, 255));
+ 	left_scrollpanel.add(left_blinkpanel);
+ 	left_blinkpanel.setPreferredSize(new Dimension(160, 30));
+ 	left_blinkpanel.setLayout(new GridLayout(0, 6, 2, 3));
+ 	
+ 	blinklabel_1 = new JLabel("1");
+ 	blinklabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+ 	blinklabel_1.setPreferredSize(new Dimension(16, 16));
+ 	blinklabel_1.setOpaque(true);
+ 	blinklabel_1.setBackground(new Color(0, 128, 0));
+ 	left_blinkpanel.add(blinklabel_1);
+ 	
+ 	blinklabel_2 = new JLabel("2");
+ 	blinklabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+ 	blinklabel_2.setPreferredSize(new Dimension(16, 16));
+ 	blinklabel_2.setOpaque(true);
+ 	blinklabel_2.setBackground(new Color(0, 128, 0));
+ 	left_blinkpanel.add(blinklabel_2);
+ 	
+ 	blinklabel_3 = new JLabel("3");
+ 	blinklabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+ 	blinklabel_3.setBackground(new Color(0, 128, 0));
+ 	blinklabel_3.setOpaque(true);
+ 	blinklabel_3.setPreferredSize(new Dimension(16, 16));
+ 	left_blinkpanel.add(blinklabel_3);
+ 	
+ 	blinklabel_4 = new JLabel("4");
+ 	blinklabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+ 	blinklabel_4.setPreferredSize(new Dimension(16, 16));
+ 	blinklabel_4.setOpaque(true);
+ 	blinklabel_4.setBackground(new Color(0, 128, 0));
+ 	left_blinkpanel.add(blinklabel_4);
+ 	
+ 	blinklabel_5 = new JLabel("5");
+ 	blinklabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+ 	blinklabel_5.setBackground(new Color(0, 128, 0));
+ 	blinklabel_5.setOpaque(true);
+ 	blinklabel_5.setPreferredSize(new Dimension(16, 16));
+ 	left_blinkpanel.add(blinklabel_5);
+ 	
+ 	blinklabel_6 = new JLabel("6");
+ 	blinklabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+ 	blinklabel_6.setBackground(new Color(0, 128, 0));
+ 	blinklabel_6.setPreferredSize(new Dimension(16, 16));
+ 	blinklabel_6.setOpaque(true);
+ 	left_blinkpanel.add(blinklabel_6);
+ 	
+ 	JLabel label_2 = new JLabel("Attention");
+ 	label_2.setForeground(new Color(244, 164, 96));
+ 	left_scrollpanel.add(label_2);
+ 	
+ 	attention_progressBar = new JProgressBar();
+ 	attention_progressBar.setPreferredSize(new Dimension(146, 24));
+ 	left_scrollpanel.add(attention_progressBar);
+ 	
+ 	JLabel label_3 = new JLabel("Meditationtion");
+ 	label_3.setForeground(new Color(244, 164, 96));
+ 	left_scrollpanel.add(label_3);
+ 	
+ 	meditation_progressBar = new JProgressBar();
+ 	meditation_progressBar.setPreferredSize(new Dimension(146, 24));
+ 	left_scrollpanel.add(meditation_progressBar);
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	/*
 		//signal Label
 	    //JLabel alphaLabel = 
 	    //alphaLabel.setFont(uiFont);
@@ -169,7 +269,7 @@ protected void addSignalsfield_toScrolllist(){
 	    valueA.setForeground(new Color(255, 255, 0));
 	    valueA.setEditable(false);
 	    signals_scrollPane.add(valueA);
-
+*/
 	
 }
 
@@ -199,8 +299,10 @@ private void addto_topPanel(){
 			top_westLabel.setForeground(new Color(255, 255, 0));
 			//top_westLabel.setPreferredSize(new Dimension(180, 40));
 			top_westPanel.add(top_westLabel,BorderLayout.CENTER);
-			top_northLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			
+			/*
+			////////////top_centerpanel//////////////// 
+			 */
 		
 		
 	}
@@ -266,9 +368,7 @@ private void addto_leftPanel(){
 	Signals_labels.setForeground(new Color(255, 204, 102));
 	left_centrePanel.add(Signals_labels, BorderLayout.NORTH);
 	
-	 signals_scrollPane = new JScrollPane();
- 	left_centrePanel.add(signals_scrollPane, BorderLayout.CENTER);
- 	
+	 
  	addSignalsfield_toScrolllist();
 	
     
@@ -359,13 +459,12 @@ private void addto_centrePanel(){
 
 
 
-
 private void setuppanel() {
 	// TODO Auto-generated method stub
 	
 	mleftPanel = new JPanel();
 	//mleftPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-	mleftPanel.setPreferredSize(new Dimension(180, 10));
+	mleftPanel.setPreferredSize(new Dimension(180, 20));
 	mleftPanel.setBackground(new Color(0.9f, 0.3f, 0.3f,1.0f));
 	contentPane.add(mleftPanel, BorderLayout.WEST);
 	mleftPanel.setLayout(new BorderLayout(2, 2));
@@ -403,6 +502,7 @@ private void setuppanel() {
 	left_centrePanel.setBackground(new Color(0.2f, 0.9f, 0.3f,0.3f));
 	mleftPanel.add(left_centrePanel, BorderLayout.CENTER);
 	left_centrePanel.setLayout(new BorderLayout(2, 2));
+	//left_centrePanel.setPreferredSize(new Dimension(60,40));;
 	
 	
 	
@@ -437,6 +537,8 @@ private void setuppanel() {
 	/*
 	 ////////-:-:-:-:-:-///////////
 	 */
+	
+	
 	
 	/*
 	 ////////mcentrePanel Parts///////////

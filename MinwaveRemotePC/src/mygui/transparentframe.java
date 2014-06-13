@@ -5,14 +5,13 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.GridLayout;
 
-public class devgui extends JFrame {
+public class transparentframe extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -20,7 +19,7 @@ public class devgui extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					devgui frame = new devgui();
+					transparentframe frame = new transparentframe();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,19 +31,31 @@ public class devgui extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public devgui() {
+	public transparentframe() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		//Relativ
+		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		textField = new JTextField();
-		contentPane.add(textField, BorderLayout.WEST);
-		textField.setColumns(10);
+		JPanel panel1 = new JPanel();
+		contentPane.add(panel1);
+		
+		JPanel panel2 = new JPanel();
+		contentPane.add(panel2);
+		
+		JPanel panel3 = new JPanel();
+		contentPane.add(panel3);
+		
+		JPanel panel4 = new JPanel();
+		contentPane.add(panel4);
+		
+		JPanel panel5 = new JPanel();
+		contentPane.add(panel5);
+		
+		JPanel panel6 = new JPanel();
+		contentPane.add(panel6);
 	}
-	
-	
+
 }
