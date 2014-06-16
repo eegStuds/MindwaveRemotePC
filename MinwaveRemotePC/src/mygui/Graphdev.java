@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -18,11 +19,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import ChartDirector.*;
+
 import java.util.*;
+
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 public class Graphdev extends JFrame implements DemoModule
 {
@@ -56,7 +63,10 @@ public class Graphdev extends JFrame implements DemoModule
     private JTextField valueA;
     private JTextField valueB;
     private JTextField valueC;
-
+	private XYChart c;
+    private int chartwidth=600;
+    private int chartheight=270;
+    
     //
     // The main method to allow this demo to run as a standalone program.
     //
@@ -82,7 +92,35 @@ public class Graphdev extends JFrame implements DemoModule
 
         // Set JFrame title to name of this demo program
         setTitle(toString());
-        setResizable(false);
+        setResizable(true);
+        this.addComponentListener(new ComponentListener() {
+			
+			@Override
+			public void componentShown(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void componentResized(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				int width=Graphdev.this.getWidth();
+				int height=Graphdev.this.getHeight();
+				update_chartwidth(width,height);
+			}
+			
+			@Override
+			public void componentMoved(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void componentHidden(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
         if (getDefaultCloseOperation() != EXIT_ON_CLOSE)
         {
@@ -227,7 +265,23 @@ public class Graphdev extends JFrame implements DemoModule
         runPB.doClick();
     }
 
-    //
+    protected void update_chartwidth(int width, int height) {
+		// TODO Auto-generated method stub
+    	//c = new XYChart(600, 270, 0xf4f4f4, 0x000000, 1);
+    	if(width>700 && height>400)
+    	{
+    		System.out.print(width);
+    		System.out.println("    ");
+    		System.out.println(height);
+    		chartwidth=width-200;
+    		chartheight=height-100;
+    		//drawChart(chartViewer1, width-200, height-100);
+    	//this.c.setSize(width-300, height-200);
+    	//this.c.setPlotArea(55, 62, width-400, height-300, 0xffffff, -1, -1, 0xcccccc, 0xcccccc);
+    	}
+	}
+
+	//
     // The data update routine. In this demo, it is invoked every 250ms to get new data.
     //
     private void dataRateTimer_Tick()
@@ -327,17 +381,17 @@ public class Graphdev extends JFrame implements DemoModule
     //
     private void chartViewer1_viewPortChanged(ViewPortChangedEvent e)
     {
-        drawChart(chartViewer1);
+        drawChart(chartViewer1, chartwidth , chartheight);
     }
 
     //
     // Draw the chart and display it in the given viewer.
     //
-    private void drawChart(ChartViewer viewer)
+    private void drawChart(ChartViewer viewer,int width,int height)
     {
         // Create an XYChart object 600 x 270 pixels in size, with light grey (f4f4f4)
         // background, black (000000) border, 1 pixel raised effect, and with a rounded frame.
-        XYChart c = new XYChart(600, 270, 0xf4f4f4, 0x000000, 1);
+        c = new XYChart(width, height, 0xf4f4f4, 0x000000, 1);
         c.setRoundedFrame();
 
         // Re-cycle the resources of the existing chart, if any. This can improve performance
@@ -347,7 +401,7 @@ public class Graphdev extends JFrame implements DemoModule
         // Set the plotarea at (55, 62) and of size 520 x 175 pixels. Use white (ffffff)
         // background. Enable both horizontal and vertical grids by setting their colors to
         // grey (cccccc). Set clipping mode to clip the data lines to the plot area.
-        c.setPlotArea(55, 62, 520, 175, 0xffffff, -1, -1, 0xcccccc, 0xcccccc);
+        c.setPlotArea(55, 62, width-80, height-95, 0xffffff, -1, -1, 0xcccccc, 0xcccccc);
         c.setClipping();
 
         // Add a title to the chart using 15 pts Times New Roman Bold Italic font, with a light
