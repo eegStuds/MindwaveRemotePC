@@ -99,6 +99,10 @@ public class checkboxframe extends JFrame implements ActionListener{
 		panelcentral.setLayout(gbl_panelcentral);
 		
 		JRadioButton deltabtn = new JRadioButton("Delta");
+		deltabtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		GridBagConstraints gbc_deltabtn = new GridBagConstraints();
 		gbc_deltabtn.insets = new Insets(0, 0, 5, 0);
 		gbc_deltabtn.gridx = 0;
@@ -158,6 +162,7 @@ public class checkboxframe extends JFrame implements ActionListener{
 		panelbottom.setLayout(new GridLayout(0, 1, 10, 5));
 		
 		JButton btnNewButton = new JButton("Submit");
+		
 		panelbottom.add(btnNewButton);
 	}
 
