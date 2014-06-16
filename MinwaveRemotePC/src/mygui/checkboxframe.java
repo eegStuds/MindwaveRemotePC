@@ -7,17 +7,23 @@ import javax.swing.border.EmptyBorder;
 
 
 
+
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
-public class checkboxframe extends JFrame implements ActionListener{
+public class checkboxframe extends JFrame {
 
 	public JPanel contentPane;
 	private JPanel paneltop;
-	private Samplegui pSamplegui;
+	//private Samplegui pSamplegui;
 	private JMenuItem mntmSave;
+	protected CheckboxActionListener mCheckboxActionListener;
+   public LinkedList<JRadioButton> pCheckBoxs = new LinkedList<JRadioButton>();
+	protected String[] Rbuttnames= {"Delta","theta","low alpha","high alpha" , "low beta","high beta","low gamma", "high gamma"}; 
    
-	/**
+   /**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -50,7 +56,7 @@ public class checkboxframe extends JFrame implements ActionListener{
 		settingmenu.add(mntmFile);
 		
 		mntmSave = new JMenuItem("save");
-		mntmSave.addActionListener(this);
+		//mntmSave.addActionListener(this);
 				
 				
 				/*new ActionListener() {
@@ -98,16 +104,30 @@ public class checkboxframe extends JFrame implements ActionListener{
 		gbl_panelcentral.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panelcentral.setLayout(gbl_panelcentral);
 		
-		JRadioButton deltabtn = new JRadioButton("Delta");
-		deltabtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
+		for(int i=0;i<8;i++){
+			
+			JRadioButton btn = new JRadioButton(Rbuttnames[i]);
+	        //btn.setText(btn+Rbuttnames[i]);
+			GridBagConstraints gbc_deltabtn = new GridBagConstraints();
+			gbc_deltabtn.insets = new Insets(0, 0, 5, 0);
+			gbc_deltabtn.gridx = 0;
+			gbc_deltabtn.gridy = i;
+			panelcentral.add(btn, gbc_deltabtn);
+			
+			pCheckBoxs.add(btn);
+			
+		}
+		
+		/*JRadioButton deltabtn = new JRadioButton("Delta");
+		
 		GridBagConstraints gbc_deltabtn = new GridBagConstraints();
 		gbc_deltabtn.insets = new Insets(0, 0, 5, 0);
 		gbc_deltabtn.gridx = 0;
 		gbc_deltabtn.gridy = 0;
 		panelcentral.add(deltabtn, gbc_deltabtn);
+		
+		pCheckBoxs.add(deltabtn);
 		
 		JRadioButton thetabtn = new JRadioButton("Theta");
 		GridBagConstraints gbc_thetabtn = new GridBagConstraints();
@@ -155,22 +175,27 @@ public class checkboxframe extends JFrame implements ActionListener{
 		GridBagConstraints gbc_highgammabtn = new GridBagConstraints();
 		gbc_highgammabtn.gridx = 0;
 		gbc_highgammabtn.gridy = 7;
-		panelcentral.add(highgammabtn, gbc_highgammabtn);
+		panelcentral.add(highgammabtn, gbc_highgammabtn);*/
 		
 		JPanel panelbottom = new JPanel();
 		contentPane.add(panelbottom, BorderLayout.SOUTH);
 		panelbottom.setLayout(new GridLayout(0, 1, 10, 5));
 		
-		JButton btnNewButton = new JButton("Submit");
+		JButton submitbutton = new JButton("Submit");
 		
-		panelbottom.add(btnNewButton);
+		panelbottom.add(submitbutton);
+		
+		//CheckboxActionListener al = new CheckboxActionListener();
+		mCheckboxActionListener=new CheckboxActionListener(this.pCheckBoxs);
+		
+		submitbutton.addActionListener(this.mCheckboxActionListener);
 	}
 
-	protected void runSamplegui() {
+	/*protected void runSamplegui() {
 		// TODO Auto-generated method stub
 		this.pSamplegui=new Samplegui();
 
-	}
+	}*/
 
 	protected void exitnow() {
 		// TODO Auto-generated method stub
@@ -178,7 +203,7 @@ public class checkboxframe extends JFrame implements ActionListener{
 		this.dispose();
 	}
 
-	@Override
+	/*@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==mntmSave)
@@ -186,6 +211,6 @@ public class checkboxframe extends JFrame implements ActionListener{
 			pSamplegui=new Samplegui();
 		}
 		
-	}
+	}*/
 
 }
