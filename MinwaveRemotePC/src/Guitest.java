@@ -230,7 +230,7 @@ public class Guitest{
             shiftData(timeStamps, nextDataTime);
 
             // Update nextDataTime
-            nextDataTime = new Date(nextDataTime.getTime() + dataInterval);;
+            nextDataTime = new Date(nextDataTime.getTime() + dataInterval);
         }
         while (nextDataTime.before(now));
 

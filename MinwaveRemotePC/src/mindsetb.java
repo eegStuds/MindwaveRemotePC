@@ -139,6 +139,7 @@ public class mindsetb {
 					Thread.sleep(2);
 				}
 				catch(Exception e){
+					e.printStackTrace();
 
 				}
 			}
