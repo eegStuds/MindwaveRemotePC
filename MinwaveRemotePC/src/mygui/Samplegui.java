@@ -61,7 +61,7 @@ public boolean hasFinishedInitialization;
 	/**
 	 * Launch the application.
 	 */
-
+/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -75,7 +75,7 @@ public boolean hasFinishedInitialization;
 			}
 		});
 	}
-
+*/
 	///
 	
 	
@@ -127,13 +127,13 @@ public void setuppanel() {
 	mtopPanel=new JPanel();
 	//mtopPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 	mtopPanel.setPreferredSize(new Dimension(10, 100));
-	mtopPanel.setBackground(new Color(0.2f, 0.3f, 0.9f,1.0f));
+	mtopPanel.setBackground(new Color(248, 248, 255));
 	contentPane.add(mtopPanel, BorderLayout.NORTH);
 	mtopPanel.setLayout(new BorderLayout(2, 2));
 	
 	mcentrePanel = new JPanel();
 	//centrePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-	mcentrePanel.setBackground(new Color(0.8f, 0.9f, 0.3f,1.0f));
+	mcentrePanel.setBackground(new Color(211, 211, 211));
 	mcentrePanel.setLayout(new BorderLayout(2, 2));
 	contentPane.add(mcentrePanel, BorderLayout.CENTER);
 	
@@ -142,13 +142,13 @@ public void setuppanel() {
 	 */
 	left_northPanel = new JPanel();
 	left_northPanel.setPreferredSize(new Dimension(10, 20));
-	left_northPanel.setBackground(new Color(0.2f, 0.9f, 0.9f,0.8f));
+	left_northPanel.setBackground(new Color(216, 191, 216));
 	mleftPanel.add(left_northPanel, BorderLayout.NORTH);
 	left_northPanel.setLayout(new BorderLayout(2, 2));
 	
 	left_southPanel = new JPanel();
-	left_southPanel.setPreferredSize(new Dimension(10, 200));
-	left_southPanel.setBackground(new Color(0.2f, 0.9f, 0.3f,0.8f));
+	left_southPanel.setPreferredSize(new Dimension(10, 150));
+	left_southPanel.setBackground(new Color(0, 102, 153));
 	left_southPanel.setLayout(new GridLayout(6, 1, 0, 0));
 	mleftPanel.add(left_southPanel, BorderLayout.SOUTH);
 	
@@ -171,7 +171,7 @@ public void setuppanel() {
 	 */
 	top_northPanel = new JPanel();
 	top_northPanel.setPreferredSize(new Dimension(10, 20));
-	top_northPanel.setBackground(new Color(0.2f, 0.9f, 0.9f,0.8f));
+	top_northPanel.setBackground(new Color(0, 0, 128));
 	top_northPanel.setLayout(new BorderLayout(2, 2));
 	mtopPanel.add(top_northPanel, BorderLayout.NORTH);
 	
@@ -179,14 +179,14 @@ public void setuppanel() {
 	
 	
 	top_westPanel = new JPanel();
-	top_westPanel.setPreferredSize(new Dimension(100, 10));
-	top_westPanel.setBackground(new Color(0.2f, 0.9f, 0.3f,0.8f));
+	top_westPanel.setPreferredSize(new Dimension(180, 10));
+	top_westPanel.setBackground(new Color(0, 128, 128));
 	top_westPanel.setLayout(new BorderLayout(2, 2));
 	mtopPanel.add(top_westPanel, BorderLayout.WEST);
 	
 	
 	top_centrePanel = new JPanel();
-	top_centrePanel.setBackground(new Color(0.2f, 0.9f, 0.3f,0.3f));
+	top_centrePanel.setBackground(new Color(245, 255, 250));
 	mtopPanel.add(top_centrePanel, BorderLayout.CENTER);
 	/*
 	 ////////-:-:-:-:-:-///////////
@@ -214,7 +214,7 @@ public void addSignalsfield_toScrolllist(){
  	left_centrePanel.add(signals_scrollPane, BorderLayout.CENTER);
  	
  	left_scrollpanel = new JPanel();
- 	left_scrollpanel.setBackground(new Color(47, 79, 79));
+ 	left_scrollpanel.setBackground(new Color(0, 0, 139));
  	signals_scrollPane.setViewportView(left_scrollpanel);
  	left_scrollpanel.setLayout(new GridLayout(7, 0, 0, 0));
  	
@@ -223,9 +223,10 @@ public void addSignalsfield_toScrolllist(){
  	 */
  	
  	JLabel label = new JLabel("Eye Blink");
+ 	label.setFont(new Font("Lucida Bright", Font.BOLD, 17));
  	label.setMinimumSize(new Dimension(42, 8));
  	label.setPreferredSize(new Dimension(42, 8));
- 	label.setForeground(new Color(222, 184, 135));
+ 	label.setForeground(new Color(153, 204, 153));
  	left_scrollpanel.add(label);
  	
  	left_blinkpanel = new JPanel();
@@ -280,7 +281,8 @@ public void addSignalsfield_toScrolllist(){
  	///////////////////////////////////////
  	
  	JLabel label_2 = new JLabel("Attention");
- 	label_2.setForeground(new Color(244, 164, 96));
+ 	label_2.setFont(new Font("Lucida Bright", Font.BOLD, 17));
+ 	label_2.setForeground(new Color(153, 204, 153));
  	left_scrollpanel.add(label_2);
  	
  	attention_progressBar = new JProgressBar();
@@ -288,7 +290,8 @@ public void addSignalsfield_toScrolllist(){
  	left_scrollpanel.add(attention_progressBar);
  	
  	JLabel label_3 = new JLabel("Meditationtion");
- 	label_3.setForeground(new Color(244, 164, 96));
+ 	label_3.setFont(new Font("Lucida Bright", Font.BOLD, 17));
+ 	label_3.setForeground(new Color(153, 204, 153));
  	left_scrollpanel.add(label_3);
  	
  	meditation_progressBar = new JProgressBar();
@@ -328,17 +331,20 @@ public void addto_topPanel(){
        top_northPanel.add(top_northLabel, BorderLayout.NORTH);
        */
 	
-       JLabel top_northLabel = new JLabel("Advanced Software Engineering");
-       top_northLabel.setForeground(new Color(255, 255, 51));
+       JLabel top_northLabel = new JLabel("Neurosky Gui");
+       top_northLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
+       top_northLabel.setBackground(new Color(0, 0, 0));
+       top_northLabel.setForeground(new Color(230, 230, 250));
        
 		top_northPanel.add(top_northLabel,BorderLayout.CENTER);
 		 top_northLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		 
-		JLabel top_westLabel = new JLabel("Apps");
+		JLabel top_westLabel = new JLabel("APPS");
+		top_westLabel.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 24));
 		 top_westLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		 top_westLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-			top_westLabel.setForeground(new Color(255, 255, 0));
+			top_westLabel.setForeground(new Color(250, 235, 215));
 			//top_westLabel.setPreferredSize(new Dimension(180, 40));
 			top_westPanel.add(top_westLabel,BorderLayout.CENTER);
 			
@@ -367,7 +373,10 @@ public void addto_leftPanel(){
     left_southPanel.add(freezePB);
     
  // Update Period label
-    left_southPanel.add(new JLabel("Update Period (ms)"));
+    JLabel label = new JLabel("Update Period (ms)");
+    label.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+    label.setForeground(new Color(153, 204, 153));
+    left_southPanel.add(label);
     samplePeriod = new JComboBox(new Object[]{"20","40","50","100","200","250","500","750","1000"});
     samplePeriod.setSelectedItem("250");
     
@@ -397,8 +406,9 @@ public void addto_leftPanel(){
  	 */
  	
  	JLabel Signals_labels = new JLabel("Signals");
+ 	Signals_labels.setFont(new Font("Rockwell Condensed", Font.BOLD, 18));
 	Signals_labels.setHorizontalAlignment(SwingConstants.CENTER);
-	Signals_labels.setForeground(new Color(255, 204, 102));
+	Signals_labels.setForeground(new Color(0, 0, 139));
 	left_northPanel.add(Signals_labels, BorderLayout.NORTH);
 	
  	/*
