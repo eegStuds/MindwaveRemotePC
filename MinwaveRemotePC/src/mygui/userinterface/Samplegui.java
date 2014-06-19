@@ -1,17 +1,21 @@
-package mygui;
+package mygui.userinterface;
 import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import mygui.DemoModule;
 import ChartDirector.*;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Samplegui extends JFrame implements DemoModule{
 
 	public JPanel contentPane;
 	public JPanel mleftPanel;
+	
+	
 	//public JPanel mrightPanel;
 	public JPanel mcentrePanel;
 	public JPanel mtopPanel;
@@ -30,7 +34,7 @@ public class Samplegui extends JFrame implements DemoModule{
 	public JButton runPB;
 	public JButton freezePB;
 	public JComboBox samplePeriod;
-	
+	public JButton selectwavebtn;
 	
 	
 ////////left_centralpanel///////////
@@ -51,6 +55,13 @@ public JLabel blinklabel_4;
 public JLabel blinklabel_5;
 public JLabel blinklabel_6;
 public boolean hasFinishedInitialization;
+private JButton appbutton;
+
+private JLabel lblEyebrow;
+private JPanel paneleyebrow;
+public Object btnselectwave;
+
+
 	
 	
 	
@@ -216,16 +227,39 @@ public void addSignalsfield_toScrolllist(){
  	left_scrollpanel = new JPanel();
  	left_scrollpanel.setBackground(new Color(0, 0, 139));
  	signals_scrollPane.setViewportView(left_scrollpanel);
- 	left_scrollpanel.setLayout(new GridLayout(7, 0, 0, 0));
+ 	left_scrollpanel.setLayout(new GridLayout(8, 0, 0, 0));
  	
- 	/*
- 	 //////////////eye blink setup/////////////////////////
- 	 */
+ 	lblEyebrow = new JLabel("Eyebrow");
+ 	lblEyebrow.setForeground(new Color(143, 188, 143));
+ 	lblEyebrow.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+ 	left_scrollpanel.add(lblEyebrow);
+ 	
+ 	paneleyebrow = new JPanel();
+ 	paneleyebrow.setForeground(Color.BLACK);
+ 	paneleyebrow.setBackground(Color.BLACK);
+ 	left_scrollpanel.add(paneleyebrow);
+ 	paneleyebrow.setPreferredSize(new Dimension(160, 30));
+ 	paneleyebrow.setLayout(new GridLayout(1, 6, 2, 5));
+ 	
+ 	//paneleyebrow = new JPanel();
+ 	//left_scrollpanel.add(paneleyebrow);
+ 	
+ 	//paneleyebrow.setLayout(new GridLayout(1, 6, 0, 0));
+ 	for(int j=1;j<7;j++){
+ 		JLabel eyebrowlabel_1 = new JLabel(String.valueOf(j));
+ 	 	eyebrowlabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+ 	 	eyebrowlabel_1.setPreferredSize(new Dimension(16, 16));
+ 	 	eyebrowlabel_1.setOpaque(true);
+ 	 	eyebrowlabel_1.setBackground(Color.WHITE);
+ 	 	paneleyebrow.add(eyebrowlabel_1);
+ 	 	eyebrowlabel_1.setName("eyebrow"+j);
+ 	
+ 	}
  	
  	JLabel label = new JLabel("Eye Blink");
- 	label.setFont(new Font("Lucida Bright", Font.BOLD, 17));
- 	label.setMinimumSize(new Dimension(42, 8));
- 	label.setPreferredSize(new Dimension(42, 8));
+ 	label.setFont(new Font("Lucida Bright", Font.BOLD, 14));
+ 	label.setMinimumSize(new Dimension(42, 3));
+ 	label.setPreferredSize(new Dimension(42, 4));
  	label.setForeground(new Color(153, 204, 153));
  	left_scrollpanel.add(label);
  	
@@ -338,15 +372,12 @@ public void addto_topPanel(){
        
 		top_northPanel.add(top_northLabel,BorderLayout.CENTER);
 		 top_northLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		 
-		JLabel top_westLabel = new JLabel("APPS");
-		top_westLabel.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 24));
-		 top_westLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		 top_westLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-			top_westLabel.setForeground(new Color(250, 235, 215));
-			//top_westLabel.setPreferredSize(new Dimension(180, 40));
-			top_westPanel.add(top_westLabel,BorderLayout.CENTER);
+			
+			appbutton = new JButton("Select App");
+			appbutton.setFocusPainted(false);
+			appbutton.setBackground(new Color(230, 230, 250));
+			appbutton.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 18));
+			top_westPanel.add(appbutton, BorderLayout.CENTER);
 			
 			/*
 			////////////top_centerpanel//////////////// 
@@ -382,6 +413,12 @@ public void addto_leftPanel(){
     
     left_southPanel.add(samplePeriod);
     
+    selectwavebtn = new JButton("Select Brain Waves");
+    //selectwavebtn.addActionListener() ;
+    
+    selectwavebtn.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+    left_southPanel.add(selectwavebtn);
+    
     
     /*
 	 ////////-:-:-:-:-:-///////////
@@ -416,51 +453,6 @@ public void addto_leftPanel(){
  	 */
  	
  	
-    
-    
-    /*
-
-
-    
- // Simulated Machine label
-    leftPanel.add(new JLabel("Simulated Machine")).setBounds(5, 180, 130, 20);
-
-    
- // Alpha Label
-    JLabel alphaLabel = new JLabel("Alpha");
-    alphaLabel.setFont(uiFont);
-    leftPanel.add(alphaLabel).setBounds(5, 200, 60, 20);
-
-    // Alpha value
-    valueA = new JTextField();
-    valueA.setEditable(false);
-    leftPanel.add(valueA).setBounds(65, 200, 70, 20);
-
-    // Beta label
-    JLabel betaLabel = new JLabel("Beta");
-    betaLabel.setFont(uiFont);
-    leftPanel.add(betaLabel).setBounds(5, 220, 60, 20);
-
-    // Beta value
-    valueB = new JTextField();
-    valueB.setEditable(false);
-    leftPanel.add(valueB).setBounds(65, 220, 70, 20);
-
-    // Gamma label
-    JLabel gammaLabel = new JLabel("Gamma");
-    gammaLabel.setFont(uiFont);
-    leftPanel.add(gammaLabel).setBounds(5, 240, 60, 20);
-
-    // Gamma value
-    valueC = new JTextField();
-    valueC.setEditable(false);
-    leftPanel.add(valueC).setBounds(65, 240, 70, 20);
-    
- // Total expected panel size
-    leftPanel.setPreferredSize(new Dimension(140, 270));
-
-    
-	*/
 		
 	
 	

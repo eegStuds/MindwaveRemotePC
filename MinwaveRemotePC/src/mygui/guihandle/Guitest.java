@@ -1,13 +1,21 @@
+package mygui.guihandle;
+
 import java.awt.Color;
 import java.awt.event.*;
-
 import java.util.Date;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+
 import ChartDirector.*;
-import mygui.Samplegui;
+import mygui.userinterface.Samplegui;
+import mygui.userinterface.checkboxframe;
 
 
-public class Guitest{
+
+
+public class Guitest implements WindowListener, ActionListener{
 
 	public Samplegui mSamplegui;
 	
@@ -27,6 +35,10 @@ public class Guitest{
 
 	private int chartheight;
 
+	protected checkboxframe mCheckboxSignal;
+
+	
+
 
 	//private boolean hasFinishedInitialization;
     
@@ -37,7 +49,8 @@ public class Guitest{
 		Thread guiThread=new Thread(new Runnable() {
 			public void run() {
 				Guitest guitest=new Guitest();
-				guitest.loadgui();
+				guitest.loadguiotherAction();
+				guitest.setupActionClick();
 				guitest.setupGuiData();
 				guitest.setstart();
 			}
@@ -48,11 +61,19 @@ public class Guitest{
 		mSamplegui=new Samplegui();
 		//mSamplegui.setVisible(true);
 	}
-
-	protected void loadgui() {
-		// TODO Auto-generated method stub
+	protected void setupActionClick(){
 		
-		mSamplegui.runPB.addActionListener(new ActionListener() {
+		
+               //////////////////////main gui//////////////
+		
+		
+         mSamplegui.runPB.addActionListener(this);
+        		 
+        		 /*new ActionListener() {
+	
+	
+	
+	
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -60,8 +81,10 @@ public class Guitest{
 				runPB_clicked();
 			}
 		});
-		
-		mSamplegui.freezePB.addActionListener(new ActionListener() {
+		*/
+		mSamplegui.freezePB.addActionListener(this);
+				
+				/*new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -69,9 +92,15 @@ public class Guitest{
 				freezePB_Clicked();
 				
 			}
-		});
+		});*/
 		
-		mSamplegui.samplePeriod.addActionListener(new ActionListener() {
+		mSamplegui.selectwavebtn.addActionListener(this);
+		
+
+		
+		mSamplegui.samplePeriod.addActionListener(this);
+				
+				/*new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent evt) {
@@ -79,6 +108,19 @@ public class Guitest{
 				samplePeriod_ValueChanged(evt);
 			}
 		});
+		*/
+		
+		///////////////////Checkbox//////////////////////////////
+		
+		
+		
+		
+	}
+
+	protected void loadguiotherAction() {
+		// TODO Auto-generated method stub
+		///////////////main gui///////////////////
+		
 		mSamplegui.mcentrePanel.addComponentListener(new ComponentListener() {
 			
 			@Override
@@ -107,7 +149,7 @@ public class Guitest{
 				
 			}
 		});
-		
+		 
 		mSamplegui.mChartviewer.addViewPortListener(new ViewPortAdapter(){
 			public void  viewPortChanged(ViewPortChangedEvent e){
 				chartViewer1_viewPortChanged(e);
@@ -335,6 +377,98 @@ public class Guitest{
 
         // Set the chart image to the ChartViewer
         chartViewer12.setChart(c);
+		
+	}
+    
+    
+    ///////////////////////////////////////////////////
+    ////////////////////windows event///////////////////
+    /////////////////////////////////////////////
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowClosing(WindowEvent e) {
+		if(e.getSource()==Guitest.this.mCheckboxSignal)
+		{
+		
+			Guitest.this.mCheckboxSignal.setVisible(false);
+			Guitest.this.mCheckboxSignal.dispose();
+		}
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/////////////////////////////////////////////////////
+	//////////////Action click//////////////////////////////
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+		if(arg0.getSource()==Guitest.this.mSamplegui.selectwavebtn)
+		{
+		
+			//checkboxframe = new checkboxframe();
+			//checkboxframe.setVisible(true);
+			
+             System.out.println("actionselect");
+			Guitest.this.mCheckboxSignal = new checkboxframe();
+			Guitest.this.mCheckboxSignal.setVisible(true);
+			mCheckboxSignal.checksubButton.addActionListener(Guitest.this);
+		    //JOptionPane.showMessageDialog(null, sb);
+		    
+		    
+		}else if(arg0.getSource()==Guitest.this.mSamplegui.runPB){
+			runPB_clicked();
+			
+			
+		}else if (arg0.getSource()==Guitest.this.mSamplegui.freezePB) {
+			freezePB_Clicked();
+		}else if(arg0.getSource()==Guitest.this.mSamplegui.samplePeriod){
+			samplePeriod_ValueChanged(arg0);
+		}
+		else if(arg0.getSource()==Guitest.this.mCheckboxSignal.checksubButton){
+			StringBuilder sb = new StringBuilder();
+		    sb.append("Selected Check Boxes: ");
+		    
+		    for (JRadioButton checkBox : mCheckboxSignal.pCheckBoxs) {
+		        if (checkBox.isSelected()) {
+		          sb.append(checkBox.getText()).append(' ');
+		        }
+		      }
+		    mCheckboxSignal.setVisible(false);
+			mCheckboxSignal.dispose();
+		    JOptionPane.showMessageDialog(null, sb);
+		
+		
+		}
 		
 	}
 }

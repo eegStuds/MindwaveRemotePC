@@ -16,6 +16,8 @@ import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.Point;
 import java.awt.CardLayout;
+import javax.swing.JButton;
+import java.awt.Button;
 
 public class transparentframe extends JFrame {
 
@@ -84,13 +86,10 @@ public class transparentframe extends JFrame {
 		panel.add(panel3);
 		panel3.setLayout(new CardLayout(12, 12));
 		
-		JLabel label3 = new JLabel("C");
-		label3.setOpaque(true);
-		label3.setHorizontalTextPosition(SwingConstants.CENTER);
-		label3.setHorizontalAlignment(SwingConstants.CENTER);
-		label3.setBackground(Color.MAGENTA);
-		label3.setAlignmentX(0.5f);
-		panel3.add(label3, "name_29787180630350");
+		Button button = new Button("C");
+		button.setFocusable(false);
+		button.setBackground(Color.MAGENTA);
+		panel3.add(button, "name_92863452330985");
 		
 		JPanel panel4 = new JPanel();
 		panel4.setBackground(Color.YELLOW);
