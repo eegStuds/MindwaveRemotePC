@@ -1,0 +1,10 @@
+33      #pageUp 
+34      #pageDown
+38      #scrollUp
+40      #scrollDown
+37      #nextPage
+39      #previousPage
+17 521  #zoomIn
+17 45   #zoomOut
+17 50   #screenFit
+17 76   #fullScreen

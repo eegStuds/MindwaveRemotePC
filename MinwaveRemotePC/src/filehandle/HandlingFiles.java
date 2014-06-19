@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Scanner;
 
-import remoteapps.appkeydatabase.Mapping;
+import remoteapps.appkeydatabase.MappVLC;
 
 public class HandlingFiles implements KeyListener{
 
@@ -19,7 +19,7 @@ public class HandlingFiles implements KeyListener{
 
 	private void createkeydatabase() {
 		// TODO Auto-generated method stub
-		Mapping pMapping=new Mapping();
+		MappVLC pMapping=new MappVLC();
 	}
 
 	@Override

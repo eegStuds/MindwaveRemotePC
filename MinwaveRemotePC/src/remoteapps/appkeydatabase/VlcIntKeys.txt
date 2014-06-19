@@ -1,0 +1,14 @@
+77       #mute
+32       #pausePlay
+78       #nextVideo
+80       #previousVideo
+17 38    #volUp
+17 40    #volDown
+17 37    #fastForward
+17 39    #fastBackward
+16 37    #slowForward
+16 39    #slowBackward
+
+
+
+

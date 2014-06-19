@@ -6,6 +6,7 @@ import java.util.Vector;
 
 public class VlcMapping {
 	
+	
 	List<Vector<Integer>> re;
 	static public  String VlcSocketMap(int pCommand, int pStrength){
 		System.out.println("Mapping between key and functions\n"
